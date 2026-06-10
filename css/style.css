@@ -109,7 +109,7 @@ nav {
     list-style: none;
 }
 
-.nav-links a {
+.nav-link-item {
     font-family: 'DM Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.12em;
@@ -118,9 +118,22 @@ nav {
     text-decoration: none;
     transition: color 0.3s;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
 }
 
-.nav-links a::after {
+.nav-icon {
+    display: none; /* hidden on desktop */
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-text {
+    display: inline;
+}
+
+.nav-link-item::after {
     content: '';
     position: absolute;
     bottom: -4px;
@@ -132,11 +145,19 @@ nav {
     transition: transform 0.3s;
 }
 
-.nav-links a:hover {
+.nav-link-item:hover {
     color: var(--gold);
 }
 
-.nav-links a:hover::after {
+.nav-link-item:hover::after {
+    transform: scaleX(1);
+}
+
+.nav-link-item.active {
+    color: var(--gold);
+}
+
+.nav-link-item.active::after {
     transform: scaleX(1);
 }
 
@@ -998,7 +1019,7 @@ footer {
     font-size: 1rem;
 }
 
-/* mobile */
+/* ===================== TABLET (max-width: 900px) ===================== */
 @media (max-width: 900px) {
     nav {
         padding: 1.2rem 1.5rem;
@@ -1055,5 +1076,301 @@ footer {
 
     .hero-side-text {
         display: none;
+    }
+}
+
+/* ===================== MOBILE (max-width: 600px) ===================== */
+@media (max-width: 600px) {
+
+    /* ---------- Custom cursor – disable on touch devices ---------- */
+    .cursor,
+    .cursor-ring {
+        display: none;
+    }
+
+    body {
+        cursor: auto;
+        /* push content above the bottom nav */
+        padding-bottom: 70px;
+    }
+
+    /* ---------- TOP NAV – only K.P. logo, centered ---------- */
+    nav {
+        padding: 0.9rem 1.2rem;
+        background: rgba(10, 10, 8, 0.98);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+        justify-content: center;
+    }
+
+    /* ---------- BOTTOM NAV – fixed app-style tab bar ---------- */
+    .nav-links {
+        /* Remove from top nav flow */
+        position: fixed;
+        top: unset;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        /* Layout */
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        justify-content: space-around;
+        gap: 0;
+        /* Styling */
+        background: rgba(10, 10, 8, 0.98);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-top: 1px solid rgba(201, 168, 76, 0.2);
+        box-shadow: 0 -6px 30px rgba(0, 0, 0, 0.5);
+        height: 64px;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nav-links li {
+        flex: 1;
+        display: flex;
+    }
+
+    /* Switch link items to vertical icon+label layout */
+    .nav-link-item {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        font-size: 0.58rem;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        flex: 1;
+        padding: 8px 4px;
+        transition: color 0.25s;
+        border-radius: 0;
+    }
+
+    .nav-link-item::after {
+        display: none;
+    }
+
+    /* Show icons on mobile */
+    .nav-icon {
+        display: flex;
+    }
+
+    .nav-icon svg {
+        width: 22px;
+        height: 22px;
+        stroke-width: 1.6;
+        transition: stroke 0.25s, transform 0.25s;
+    }
+
+    .nav-link-item:hover,
+    .nav-link-item.active {
+        color: var(--gold);
+    }
+
+    .nav-link-item:hover .nav-icon svg,
+    .nav-link-item.active .nav-icon svg {
+        stroke: var(--gold);
+        transform: translateY(-2px);
+    }
+
+    /* active indicator dot above icon */
+    .nav-link-item.active .nav-icon::before {
+        content: '';
+        position: absolute;
+        top: 6px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--gold);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+        grid-template-columns: 1fr;
+        padding: 5.5rem 1.2rem 3rem;
+        min-height: 100svh;
+        align-content: center;
+    }
+
+    .hero-name {
+        font-size: clamp(2.8rem, 12vw, 4rem);
+    }
+
+    .hero-tagline {
+        font-size: 0.95rem;
+        max-width: 100%;
+        margin-bottom: 2.2rem;
+    }
+
+    .hero-cta {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .btn-primary,
+    .btn-outline {
+        width: 100%;
+        justify-content: center;
+        font-size: 0.75rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    .hero-stats {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 2.5rem;
+        padding: 1.5rem;
+        background: var(--surface);
+        border: 1px solid var(--border);
+    }
+
+    .stat-num {
+        font-size: 2rem;
+    }
+
+    /* ---------- SECTION WRAP ---------- */
+    .section-wrap {
+        padding: 3.5rem 1.2rem;
+    }
+
+    .section-title {
+        font-size: clamp(1.6rem, 7vw, 2.2rem);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2.5rem;
+    }
+
+    .about-info-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .info-card[style*="grid-column"] {
+        grid-column: 1 / -1;
+    }
+
+    .about-objective {
+        font-size: 0.95rem;
+    }
+
+    /* ---------- SKILLS ---------- */
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-top: 2rem;
+    }
+
+    .skill-chip {
+        font-size: 0.72rem;
+        padding: 0.75rem 0.6rem;
+    }
+
+    .soft-skills-list {
+        gap: 0.6rem;
+        margin-top: 1.5rem;
+    }
+
+    /* ---------- PROJECTS ---------- */
+    .project-card {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.8rem 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .project-num {
+        font-size: 3.5rem;
+    }
+
+    .project-title {
+        font-size: 1.4rem;
+    }
+
+    .project-visual {
+        height: 160px;
+    }
+
+    /* ---------- EXPERIENCE ---------- */
+    .experience-card {
+        padding: 1.5rem 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .experience-header {
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: flex-start;
+    }
+
+    .experience-role {
+        font-size: 1.25rem;
+    }
+
+    .edu-block {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem 1.2rem;
+        text-align: center;
+    }
+
+    .cert-block {
+        padding: 1.5rem 1.2rem;
+    }
+
+    /* ---------- ACHIEVEMENTS ---------- */
+    .achievements-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .achievement-card {
+        padding: 1.5rem 1.2rem;
+    }
+
+    /* ---------- CONTACT ---------- */
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+    .contact-link {
+        padding: 1rem 1.2rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+        padding: 2rem 1.2rem;
+        /* give extra space so bottom nav doesn't cover it */
+        margin-bottom: 0;
+    }
+
+    /* ---------- DIVIDER ---------- */
+    .divider {
+        margin: 0 1.2rem;
+    }
+
+    /* ---------- MISC ---------- */
+    .scroll-indicator,
+    .hero-side-text {
+        display: none;
+    }
+
+    .mobile-bottom-space {
+        height: 64px;
     }
 }

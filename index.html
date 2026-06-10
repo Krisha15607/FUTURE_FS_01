@@ -18,14 +18,71 @@
   <div class="cursor-ring" id="cursorRing"></div>
 
   <!-- NAV -->
-  <nav>
+  <nav id="main-nav">
     <a href="#" class="nav-logo">K.P.</a>
     <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Work</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li>
+        <a href="#about" class="nav-link-item">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4" />
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+            </svg>
+          </span>
+          <span class="nav-text">About</span>
+        </a>
+      </li>
+      <li>
+        <a href="#skills" class="nav-link-item">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </span>
+          <span class="nav-text">Skills</span>
+        </a>
+      </li>
+      <li>
+        <a href="#projects" class="nav-link-item">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+            </svg>
+          </span>
+          <span class="nav-text">Work</span>
+        </a>
+      </li>
+      <li>
+        <a href="#experience" class="nav-link-item">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="7" width="20" height="14" rx="2" />
+              <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" />
+            </svg>
+          </span>
+          <span class="nav-text">Exp</span>
+        </a>
+      </li>
+      <li>
+        <a href="#contact" class="nav-link-item">
+          <span class="nav-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </span>
+          <span class="nav-text">Contact</span>
+        </a>
+      </li>
     </ul>
   </nav>
 
@@ -341,8 +398,11 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-copy">© 2026 Krisha Panchotiya. All Rights Reserved.</div>
-    <div class="footer-gold">Crafted with passion & clean code.</div>
+    <div class="footer-gold">Crafted with passion &amp; clean code.</div>
   </footer>
+
+  <!-- Mobile bottom nav spacer -->
+  <div class="mobile-bottom-space"></div>
 
   <script src="js/script.js"></script>
 </body>
